@@ -7,4 +7,4 @@ CREATE TABLE users(
 
 -- Insert test user 
 INSERT INTO users(username, password)
-VALUES ('admin', MD5('admin123')
+VALUES ('admin', MD5('admin123'));
