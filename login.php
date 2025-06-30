@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 include("db.php"); 
 
@@ -9,15 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
   $stmt->bind_param("ss", $username, $password); 
 
+  $stmt->execute();
   $result = $stmt->get_result(); 
+  
   if ($result->num_rows == 1) {
     $_SESSION['username'] = $username; 
     $_SESSION['last_activity'] = time(); 
-    header("Loaction: admin.php");
+    header("Location: admin.php"); 
     exit();
-  }else { 
+  } else { 
     header("Location: error.php");
-    exity(); 
+    exit(); 
   }
 }
 ?>
@@ -26,11 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
   <head><title>Login</title></head>
   <body>
-    <form method="post" action="login.php">
+    <form method="post" action="index.php">
       <h2>Login</h2>
-      Username: <input type="text" name="username" required><br>
-      Password: <input type="text" name="password" required><br>\
-      <input type="sumbit" value="Login">
+      Username: <input type="text" name="username" required><br><br>
+      Password: <input type="password" name="password" required><br><br>
+      <input type="submit" value="Login"> 
     </form>
   </body>
 </html>
