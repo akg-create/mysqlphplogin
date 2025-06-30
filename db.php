@@ -1,5 +1,5 @@
 <?php
-$servername = "phpmysqllogin.free.nf";
+$servername = "sql112.infinityfree.com";
 $username = "if0_39361996";
 $password = "sDN5HzVYrr0Mec";
 $dbname = "if0_39361996_db_mysqlphplogin";
