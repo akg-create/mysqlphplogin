@@ -26,13 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html> 
 <html>
-  <head><title>Login</title></head>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
   <body>
-    <form method="post" action="index.php">
-      <h2>Login</h2>
-      Username: <input type="text" name="username" required><br><br>
-      Password: <input type="password" name="password" required><br><br>
-      <input type="submit" value="Login"> 
-    </form>
+    <div class="container">
+      <form method="post" action="index.php">
+        <h2>Login</h2>
+        Username: <input type="text" name="username" required><br><br>
+        Password: <input type="password" name="password" required><br><br>
+        <input type="submit" value="Login"> 
+      </form>
+    </div>
   </body>
 </html>
