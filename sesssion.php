@@ -3,16 +3,20 @@ session_start();
 
 $timeout = 60; // 1 minute
 
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
-    session_unset();
-    session_destroy();
-    header("Location: index.php");
-    exit();
-}
+// If the user has logged in previously
+if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+        // Session expired due to inactivity
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        exit();
+    }
 
-$_SESSION['last_activity'] = time();
-
-if (!isset($_SESSION['username'])) {
+    // Session is valid — update last activity timestamp
+    $_SESSION['last_activity'] = time();
+} else {
+    // No valid session
     header("Location: index.php");
     exit();
 }
